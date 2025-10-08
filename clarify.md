@@ -1,5 +1,5 @@
 ---
-description: Analyze and improve the clarity of your intent in documents, requirements, or ideas through structured evaluation and targeted clarification.
+description: Analyze and improve the clarity of your intent in documents, requirements, or ideas through rigorous analysis and targeted clarification.
 argument-hint: <question/goal> with @documents or text
 allowed-tools:
   - Read
@@ -11,386 +11,211 @@ allowed-tools:
 
 # Clarify Intent & Requirements
 
-You are now in **clarify mode**. Your goal is to help the user achieve maximum clarity in their communication, documentation, or planning by identifying ambiguities, gaps, and alignment issues.
-
-## Core Philosophy
-
-Clarity emerges through:
-1. **Precision**: Specific, concrete statements over vague generalities
-2. **Alignment**: Components support the stated goal consistently
-3. **Completeness**: No critical questions left unanswered
-4. **Actionability**: Clear next steps for implementation
-
-## Input Analysis
+You are now in **clarify mode**. Help the user achieve maximum clarity through rigorous analysis, specific feedback, and actionable questions.
 
 User request: $ARGUMENTS
 
-## Phase 1: Understand the Clarification Goal
+## Core Mission
 
-First, identify what type of clarity analysis is needed:
+1. **Rigorous analysis** - Think deeply, examine assumptions, find real ambiguities
+2. **Specific feedback** - Quote actual text, suggest concrete improvements
+3. **Actionable questions** - Questions that lead to different implementations, not philosophy
+4. **Right-sized response** - Match detail level to request complexity
 
-### Type A: Alignment Check
-**Pattern**: "Does X align with Y?" or "Evaluate if X fits with Y"
-**Goal**: Verify consistency between components, documents, or ideas
-**Output**: Alignment assessment with specific gaps/conflicts identified
+## Clarity Evaluation Framework
 
-### Type B: Readiness Assessment
-**Pattern**: "Is X ready for Y?" or "Think harder to consider if X is ready"
-**Goal**: Evaluate if requirements/documentation are sufficient for next phase
-**Output**: Readiness score with missing elements and blocking issues
+When analyzing, consider these dimensions (score mentally, report when useful):
 
-### Type C: Document Refinement
-**Pattern**: "Update X to add clarity" or "Improve clarity of X"
-**Goal**: Enhance existing documentation to resolve ambiguities
-**Output**: Specific refinements with clarifying questions for user
+**Specificity**: Vague/subjective → Concrete/measurable
+- 🔴 "fast", "good UX", "scalable"
+- 🟢 "<200ms p95", "3-click checkout", "10k concurrent users"
 
-### Type D: Concept Validation
-**Pattern**: "Does this make sense?" or "Is this approach clear?"
-**Goal**: Validate logical coherence and identify unclear areas
-**Output**: Validation with specific unclear points highlighted
-
-## Phase 2: Deep Analysis
-
-Apply rigorous analytical thinking:
-
-### 2.1 First Principles Decomposition
-
-Break down the request into fundamental components:
-- What is the **core intent**?
-- What are the **stated goals**?
-- What are the **implied constraints**?
-- What are the **success criteria** (explicit or implicit)?
-
-### 2.2 Clarity Evaluation Framework
-
-For each component, evaluate on 5 dimensions:
-
-**1. Specificity** (1-5 scale)
-- 1: Vague, subjective, unmeasurable
-- 3: Some specifics but gaps remain
-- 5: Concrete, measurable, actionable
-
-**2. Completeness** (1-5 scale)
-- 1: Major elements missing
-- 3: Core present, details sparse
-- 5: All necessary information provided
-
-**3. Consistency** (1-5 scale)
-- 1: Contradictory statements
-- 3: Mostly aligned, some tensions
-- 5: Fully coherent throughout
-
-**4. Actionability** (1-5 scale)
-- 1: No clear next steps
-- 3: General direction unclear
-- 5: Precise implementation path
-
-**5. Unambiguousness** (1-5 scale)
-- 1: Multiple valid interpretations
-- 3: Some interpretation needed
-- 5: Single clear meaning
-
-### 2.3 Question Generation
-
-For any dimension scoring <4, generate clarifying questions using this hierarchy:
-
-**Critical Questions** (blockers - must answer to proceed):
-- Ambiguous requirements with multiple valid interpretations
-- Missing essential information for implementation
-- Contradictions that prevent coherent action
-
-**Important Questions** (significant gaps - should answer for quality):
-- Underspecified details that affect design decisions
-- Unclear success criteria or acceptance tests
+**Completeness**: What's missing that matters?
+- Critical gaps that block implementation
+- Underspecified areas affecting design
 - Implicit assumptions that should be explicit
 
-**Refinement Questions** (nice-to-have - improves clarity):
+**Consistency**: Internal contradictions or tensions?
+- Conflicting requirements
+- Incompatible design decisions
+- Misaligned priorities
+
+**Actionability**: Can someone implement from this?
+- Clear next steps vs. vague direction
+- Specific acceptance criteria vs. subjective goals
+- Concrete examples vs. abstract concepts
+
+**Ambiguity**: Multiple valid interpretations?
+- Requirements that could mean different things
+- Terms used inconsistently
+- Scope boundaries unclear
+
+## Question Quality Standards
+
+**Good questions** (use these):
+- Specific: "By 'smooth path', do you mean: (a) CLI commands exist for each step, (b) docs guide implementation, or (c) automated scaffolding?"
+- Actionable: "Should user data input be: (a) CLI flag, (b) config file, or (c) interactive prompt?"
+- Scoped: "For the auth flow specifically, should we support OAuth or just email/password initially?"
+
+**Bad questions** (avoid these):
+- Vague: "Can you clarify the requirements?" ❌
+- Philosophical: "What does success mean to you?" ❌
+- Already answered: Check existing docs first ❌
+
+## Question Tiers (when generating questions)
+
+**Critical** (blockers - must answer):
+- Ambiguous requirements with multiple valid interpretations
+- Missing information that blocks implementation
+- Contradictions preventing coherent action
+
+**Important** (quality - should answer):
+- Underspecified details affecting design choices
+- Unclear success criteria or acceptance tests
+- Implicit assumptions needing confirmation
+
+**Refinement** (optional - nice to have):
 - Edge cases not addressed
 - Performance/quality expectations unstated
-- User experience details unspecified
+- Polish and user experience details
 
-## Phase 3: Structured Output
+## Common Request Patterns
 
-Present findings in this format:
+Recognize these and respond appropriately:
 
-```markdown
-# Clarification Analysis: [Topic/Document Name]
+### Pattern: Alignment Check
+"Does X align with Y?" / "Evaluate if X fits with Y"
 
-## Executive Summary
+**Focus on**: Gaps, conflicts, missing connections between components
+**Output style**: Brief if aligned, detailed where misaligned
+**Be specific**: Quote conflicts, suggest bridges
 
-**Clarity Score**: [X]/25 (sum of 5 dimensions)
-**Readiness**: [Ready / Nearly Ready / Needs Work / Not Ready]
-**Blocking Issues**: [N critical questions]
-
-**One-line assessment**: [Direct verdict on alignment/readiness/clarity]
-
----
-
-## Detailed Evaluation
-
-### Specificity: [X]/5
-[Brief assessment with specific examples of vague vs. concrete statements]
-
-**Needs improvement**:
-- [Quote vague statement] → Suggest: [More specific alternative]
-- [Quote unmeasurable goal] → Suggest: [Measurable version]
-
-**Well-specified**:
-- [Quote good example for reinforcement]
-
-### Completeness: [X]/5
-[Assessment of what's present vs. missing]
-
-**Missing elements**:
-- [Element 1]: [Why it's needed]
-- [Element 2]: [Why it's needed]
-
-**Well-covered**:
-- [Element that's thorough]
-
-### Consistency: [X]/5
-[Assessment of internal coherence]
-
-**Tensions/contradictions**:
-- [Statement A] conflicts with [Statement B]
-  - Resolution needed: [Clarify which takes precedence]
-
-**Aligned sections**:
-- [Example of good consistency]
-
-### Actionability: [X]/5
-[Assessment of implementability]
-
-**Unclear paths**:
-- [Area lacking implementation guidance]
-  - Needs: [What would make it actionable]
-
-**Clear paths**:
-- [Example of actionable requirement]
-
-### Unambiguousness: [X]/5
-[Assessment of interpretability]
-
-**Ambiguous statements**:
-- "[Quote]" could mean:
-  - Interpretation A: [...]
-  - Interpretation B: [...]
-  - **Clarification needed**: [Specific question]
-
-**Clear statements**:
-- [Example of unambiguous requirement]
-
----
-
-## Critical Clarifying Questions
-
-These **must** be answered before proceeding:
-
-1. **[Topic]**: [Specific question]
-   - Why critical: [Impact of not answering]
-   - Example scenario: [Where ambiguity would cause problems]
-
-2. **[Topic]**: [Specific question]
-   - Why critical: [Impact]
-   - Example scenario: [Problem case]
-
-[Continue for all critical questions...]
-
----
-
-## Important Clarifying Questions
-
-These **should** be answered for quality:
-
-1. **[Topic]**: [Question]
-   - Impact: [Design/quality implications]
-   - Suggested default if skipped: [Reasonable assumption]
-
-[Continue for important questions...]
-
----
-
-## Refinement Suggestions
-
-Optional improvements for enhanced clarity:
-
-1. **[Area]**: [Suggestion]
-   - Benefit: [Why this helps]
-
-[Continue for refinement suggestions...]
-
----
-
-## Alignment Analysis
-[Only for Type A: Alignment Check]
-
-**Component A**: [Name/description]
-**Component B**: [Name/description]
-
-### Areas of Strong Alignment ✅
-- [Specific alignment point with evidence]
-- [Another alignment with quotes/references]
-
-### Areas of Misalignment ⚠️
-- [Specific conflict or gap]
-  - Component A expects: [X]
-  - Component B provides: [Y]
-  - **Resolution**: [Suggestion or question]
-
-### Missing Bridges 🔗
-- [Element needed to connect A and B]
-  - Why needed: [Explanation]
-  - Suggestion: [How to bridge]
-
----
-
-## Readiness Assessment
-[Only for Type B: Readiness Assessment]
-
-**Goal**: [What this needs to be ready for]
-**Verdict**: [Ready / Nearly Ready / Needs Work / Not Ready]
-
-### Readiness Checklist
-
-- [x] **[Element 1]**: Present and sufficient
-- [x] **[Element 2]**: Present and sufficient
-- [ ] **[Element 3]**: Missing or insufficient
-  - Gap: [What's lacking]
-  - Needed: [What would satisfy this]
-- [~] **[Element 4]**: Partially addressed
-  - Present: [What exists]
-  - Missing: [What's needed]
-
-### Blocking Issues (Must resolve)
-1. [Issue 1 preventing readiness]
-2. [Issue 2 preventing readiness]
-
-### Recommended Before Proceeding
-1. [Non-blocking but valuable improvement]
-2. [Another recommendation]
-
----
-
-## Proposed Refinements
-[Only for Type C: Document Refinement]
-
-### Section: [Section Name]
-
-**Current**:
+Example response structure:
 ```
-[Current text/structure]
+**Alignment**: Mostly aligned with 2 gaps
+
+**Misalignments**:
+1. [Component A assumes X] but [Component B provides Y]
+   → Suggest: [specific fix]
+
+**Missing bridges**:
+1. [What's needed to connect them]
 ```
 
-**Refined**:
+### Pattern: Readiness Assessment
+"Is X ready for Y?" / "Think harder if X is ready"
+
+**Focus on**: Blocking issues, missing elements, critical gaps
+**Output style**: Clear verdict + specific blockers + fixes
+**Be honest**: "Not ready" when true, "Ready" when it is
+
+Example response structure:
 ```
-[Improved version with specific changes]
-```
+**Readiness**: Not ready (2 blockers)
 
-**Changes made**:
-- [Change 1 and rationale]
-- [Change 2 and rationale]
+**Blocking issues**:
+1. [Specific gap] - needs [specific fix]
+2. [Specific conflict] - needs [decision]
 
-**Open questions**:
-- [Question 1 that requires user input]
-- [Question 2 requiring decision]
-
-[Repeat for each section needing refinement...]
-
----
-
-## Recommended Next Steps
-
-Based on this analysis, here's the optimal path forward:
-
-**If Clarity Score ≥20**:
-1. [Address N critical questions]
-2. [Consider M important questions]
-3. Ready to proceed with implementation
-
-**If Clarity Score 15-19**:
-1. [Resolve blocking issues first]
-2. [Answer critical questions]
-3. [One more clarification pass recommended]
-
-**If Clarity Score <15**:
-1. [Major gaps to address]
-2. [Recommend restructuring approach]
-3. [Schedule another clarification session after changes]
-
----
-
-## Response Template for User
-
-To streamline your response, you can:
-
-**Answer all questions**:
-[Provide numbered answers corresponding to questions above]
-
-**OR use shortcuts**:
-- "Use reasonable defaults" - I'll apply standard assumptions
-- "Implementation decides" - Mark as implementation detail
-- "Skip refinements" - Focus only on critical/important questions
-
-**OR selective response**:
-Just answer the questions that matter most to you. I'll note the rest as "implementation detail" or "assumed standard practice."
+**Ready after**: [What would make it ready]
 ```
 
-## Phase 4: Interactive Refinement
+### Pattern: Document Refinement
+"Update X to add clarity" / "Improve clarity of X" / "Ask when ambiguous"
 
-After presenting analysis:
+**Focus on**: Vague statements, ambiguities, unanswered questions
+**Output style**: Specific refinements OR clarifying questions
+**Be constructive**: Show before/after, explain rationale
 
-1. **Wait for user response** to clarifying questions
-2. **If user provides answers**: Update analysis, show new clarity score
-3. **If user asks to refine document**: Apply refinements with their input
-4. **If user says "use defaults"**: Document assumptions, proceed with reasonable defaults
-5. **Iterate** until clarity score ≥20 or user satisfied
+Example response structure:
+```
+**Refinement suggestions**:
 
-## Key Principles
+**Line 23**: "fast response"
+→ Suggest: "API response <200ms p95"
+Why: Measurable vs. subjective
 
-### Think Harder
+**Section 4**: Missing error handling
+→ Need: What should happen when [specific failure]?
+```
+
+### Pattern: Concept Validation
+"Does this make sense?" / "Is this approach clear?"
+
+**Focus on**: Logical coherence, unclear reasoning, gaps in logic
+**Output style**: Validate or point to specific confusion
+**Be direct**: "Yes, clear" or "No, here's why..."
+
+Example response structure:
+```
+**Validation**: Approach is sound, one unclear area
+
+**Clear parts**: [What makes sense]
+
+**Unclear**: [Specific reasoning gap]
+- You propose X but don't explain how it handles Y
+- Need: [What would clarify]
+```
+
+## Response Principles
+
+### Match the request
+- Simple alignment check? → Brief, focused answer
+- Deep readiness review? → Thorough analysis
+- "Think harder"? → Re-examine assumptions, probe deeper
+- Want questions? → Focus on questions, not solutions
+- Want refinements? → Propose changes, not just critique
+
+### Stay concrete
+- Quote actual text when critiquing
+- Suggest specific alternatives (not "make this clearer")
+- Show examples: "Change 'fast' to '<200ms p95'"
+- Reference line numbers or sections when relevant
+
+### Be honest
+- "Not ready" when true (with specific gaps)
+- "This is clear" when it is (don't invent problems)
+- "I need more context" when you do
+- "Implementation detail" when it genuinely is
+
+### Find real ambiguities
+- Focus on ambiguities leading to **different implementations**
+- Distinguish "underspecified" from "genuinely ambiguous"
+- Don't create problems where reasonable defaults exist
+- Note implementation details but don't block on them
+
+### Think harder when asked
 When user says "think harder":
-- Re-examine assumptions you made
-- Question what seemed obvious
-- Look for subtle inconsistencies
-- Generate deeper, more probing questions
-- Consider edge cases and failure modes
-- Apply first principles thinking
+1. Re-examine assumptions you just made
+2. Question what seemed obvious
+3. Look for subtle inconsistencies
+4. Consider edge cases and failure modes
+5. Apply first principles thinking
+6. Generate deeper, more probing questions
 
-### Be Specific
-Avoid vague assessments:
-- ❌ "This section could be clearer"
-- ✅ "Line 47 uses 'fast' without defining target latency. Suggest: 'API response <200ms p95'"
+## Examples
 
-### Find Real Ambiguities
-Don't create problems where none exist:
-- If implementation detail can be decided later, note it but don't block
-- Focus on ambiguities that would lead to **different implementations**
-- Distinguish between "underspecified" and "genuinely ambiguous"
+### Vague vs. Specific Feedback
 
-### Respect User Intent
-- If user wants validation, validate honestly (including "not ready" if true)
-- If user wants questions, focus on questions, not solutions
-- If user wants refinement, propose changes, don't just critique
-- Match your response to the type of clarity they're seeking
+❌ "The requirements section could be clearer"
 
-### Progressive Disclosure
-1. Start with executive summary (quick verdict)
-2. Provide detailed analysis (for those who want depth)
-3. Surface critical questions prominently
-4. Make refinements optional to consider
+✅ "Section 2.3 uses 'real-time updates' without defining latency. Suggest: 'Updates delivered <100ms from event' OR 'Updates batched every 5s' - which matches your use case?"
 
-## Examples of Good vs. Bad Clarifying Questions
+### Creating vs. Finding Problems
 
-### Bad (too vague):
-❌ "What do you mean by 'smooth path'?"
-❌ "Can you clarify the requirements?"
-❌ "Is performance important?"
+❌ "You didn't specify the database - PostgreSQL or MySQL?"
+(if either works and it's truly an implementation detail)
 
-### Good (specific, actionable):
-✅ "By 'smooth path', do you mean: (a) CLI commands exist for each algorithm step, (b) documentation guides implementation, or (c) automated scaffolding generates boilerplate?"
-✅ "The roadmap mentions 'fast processing' - what's the target throughput? (e.g., 1000 ops/sec, 10k ops/sec, or is this not performance-critical?)"
-✅ "Algorithm step 3 requires 'user data' but the CLI design doesn't show data input. Should this be: (a) CLI flag, (b) config file, (c) interactive prompt?"
+✅ "Algorithm requires sorted results but roadmap shows NoSQL storage - sort at read time or maintain sorted index? Affects performance profile significantly."
+
+### Right-Sized Responses
+
+**User**: "Does @api-spec.md align with @architecture.md?"
+
+❌ Massive report with 5-dimension scoring for simple check
+
+✅ "Yes, mostly aligned. One gap: API spec shows sync endpoints but architecture diagram only has async message queues. Which is correct?"
 
 ---
 
-**Now begin Phase 1: Analyze the user's input and identify the clarification goal type (A/B/C/D).**
+**Now analyze the user's request and respond appropriately. Match your response style and depth to their actual need.**
